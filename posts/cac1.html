@@ -1,0 +1,190 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>springboot 结合Thymeleaf | Yang</title><meta name="author" content="Yang"><meta name="copyright" content="Yang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="目录 Thymeleaf 简介 结合 springboot 使用 Thymeleaf 常用表达式 Thymeleaf 常用属性 文章总结  Thymeleaf 简介Thymeleaf 是一个流行的模板引擎，该模板引擎采用 Java 语言开发，模板引擎是一个技术名词，是跨领域跨平台的概念，在 Java 语言体系下有模板引擎除了 thymeleaf 之外还有 Velocity、FreeMarker 等">
+<meta property="og:type" content="article">
+<meta property="og:title" content="springboot 结合Thymeleaf">
+<meta property="og:url" content="https://yangrof.github.io/posts/cac1.html">
+<meta property="og:site_name" content="Yang">
+<meta property="og:description" content="目录 Thymeleaf 简介 结合 springboot 使用 Thymeleaf 常用表达式 Thymeleaf 常用属性 文章总结  Thymeleaf 简介Thymeleaf 是一个流行的模板引擎，该模板引擎采用 Java 语言开发，模板引擎是一个技术名词，是跨领域跨平台的概念，在 Java 语言体系下有模板引擎除了 thymeleaf 之外还有 Velocity、FreeMarker 等">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img02.anzhiy.cn/adminuploads/1/2022/09/05/6315e145aef33.webp!cover">
+<meta property="article:published_time" content="2022-12-21T12:11:19.396Z">
+<meta property="article:modified_time" content="2022-12-21T12:34:25.974Z">
+<meta property="article:author" content="Yang">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img02.anzhiy.cn/adminuploads/1/2022/09/05/6315e145aef33.webp!cover"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yangrof.github.io/posts/cac1"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'springboot 结合Thymeleaf',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-12-21 20:34:25'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://img02.anzhiy.cn/adminuploads/1/2022/09/05/6315e145aef33.webp!topimg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Yang</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">springboot 结合Thymeleaf</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-12-21T12:11:19.396Z" title="发表于 2022-12-21 20:11:19">2022-12-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-12-21T12:34:25.974Z" title="更新于 2022-12-21 20:34:25">2022-12-21</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="springboot 结合Thymeleaf"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><strong>目录</strong></p>
+<p><a href="#t0">Thymeleaf 简介</a></p>
+<p><a href="#t1">结合 springboot 使用</a></p>
+<p><a href="#t2">Thymeleaf 常用表达式</a></p>
+<p><a href="#t3">Thymeleaf 常用属性</a></p>
+<p><a href="#t4">文章总结</a></p>
+<hr>
+<h2 id="Thymeleaf-简介"><a href="#Thymeleaf-简介" class="headerlink" title="Thymeleaf 简介"></a>Thymeleaf 简介</h2><p>Thymeleaf 是一个流行的模板引擎，该模板引擎采用 Java 语言开发，模板引擎是一个技术名词，是跨领域跨平台的概念，在 Java 语言体系下有模板引擎除了 thymeleaf 之外还有 Velocity、FreeMarker 等模板引擎，功能类似。</p>
+<h2 id="结合-springboot-使用"><a href="#结合-springboot-使用" class="headerlink" title="结合 springboot 使用"></a>结合 springboot 使用</h2><ul>
+<li>添加依赖（第二个依赖：thymeleaf 会对 html 中的标签进行严格校验，如果 html 标签缺少结束标签的话，thymeleaf 会报错，我们可以通过下面方式去除 thymeleaf 的校验）</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-thymeleaf<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>net.sourceforge.nekohtml<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>nekohtml<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>      <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.9.22<span class="tag">&lt;/<span class="name">version</span>&gt;</span><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>配置模板引擎</li>
+</ul>
+<blockquote>
+<p>thymeleaf:<br>cache: false #开发阶段，建议关闭 thymeleaf 的缓存<br>mode: HTML5<br>suffix: .html #后缀<br>prefix: classpath:&#x2F;templates&#x2F; #前缀<br>servlet:<br>content-type: text&#x2F;html</p>
+</blockquote>
+<ul>
+<li>编写 html 页面：在 resources&#x2F;templates 里面创建 html 页面，注意添加这个  xmlns:th&#x3D;”<a target="_blank" rel="noopener" href="http://www.thymeleaf.org/">http://www.thymeleaf.org</a>“</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--suppress ALL--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span> <span class="attr">xmlns:th</span>=<span class="string">&quot;http://www.thymeleaf.org&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Thymeleaf-常用表达式"><a href="#Thymeleaf-常用表达式" class="headerlink" title="Thymeleaf 常用表达式"></a>Thymeleaf 常用表达式</h2><p>1.${data}接收 key 为 data 的数据，替换所修饰标签内的文本内容</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义接口@RequestMapping(&quot;/one&quot;)public String one(Model model)&#123;     model.addAttribute(&quot;data&quot;,&quot;苹果&quot;);     return &quot;index&quot;;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 这样的我们的“username”的值就被“苹果”给替换掉 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;data&#125;&quot;</span>&gt;</span>username<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>2.@{url}主要用于链接、地址的展示，可用于<code>&lt;script th:src=&quot;&quot;&gt;</code>、<code>&lt;link th:href=&quot;&quot;&gt;</code>、<code>&lt;a th:href=&quot;&quot;&gt;</code>、<code>&lt;form th:action=&quot;&quot;&gt;</code>、<code>&lt;img th:src=&quot;&quot;&gt;</code>等</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--有参地址和无参地址差不多，这里展示有参地址--&gt;</span><span class="tag">&lt;<span class="name">a</span></span></span><br><span class="line"><span class="tag">  <span class="attr">th:href</span>=<span class="string">&quot;@&#123;&#x27;/getByIds?id=&#x27; + $&#123;id&#125;&#125;&quot;</span></span></span><br><span class="line"><span class="tag">  &gt;</span>链接相对地址，有参&lt;/a</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/getByIds&quot;)</span><span class="keyword">public</span> String <span class="title function_">getById</span><span class="params">(<span class="meta">@RequestParam(&quot;id&quot;)</span> Integer id,Model model)</span>&#123;    <span class="type">Goods</span> <span class="variable">byId</span> <span class="operator">=</span> goodsService.getById(id);    model.addAttribute(<span class="string">&quot;byId&quot;</span>,byId);    <span class="keyword">return</span> <span class="string">&quot;update&quot;</span>;&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Thymeleaf-常用属性"><a href="#Thymeleaf-常用属性" class="headerlink" title="Thymeleaf 常用属性"></a>Thymeleaf 常用属性</h2><p>1.th:each 用来遍历某个标签内容</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span>编号<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span>名称<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span>价格<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span>数量<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span>简介<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span>操作<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span> <span class="attr">th:each</span>=<span class="string">&quot;list:$&#123;findGoods&#125;&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;list.id&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;list.goodsName&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;list.goodsPrice&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;list.goodsNum&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;list.remark&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">a</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;&#x27;/deleteGoodss?id=&#x27;+$&#123;list.id&#125;&#125;&quot;</span>&gt;</span>删除<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">a</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;&#x27;/getByIds?id=&#x27;+$&#123;list.id&#125;&#125;&quot;</span>&gt;</span>修改<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/GoodsAndTypes&quot;)</span><span class="keyword">public</span> String <span class="title function_">goodsAndType</span><span class="params">(Model model)</span>&#123;    List&lt;Goods&gt; findGoods = goodsService.findGoods();    model.addAttribute(<span class="string">&quot;findGoods&quot;</span>,findGoods);    <span class="keyword">return</span> <span class="string">&quot;index&quot;</span>;&#125;</span><br></pre></td></tr></table></figure>
+
+<table border="1" cellpadding="1" cellspacing="1"><tbody><tr><td style="width:79px;">关键字</td><td style="width:137px;">功能</td><td style="width:433px;">案例</td></tr><tr><td style="width:79px;">th:id</td><td style="width:137px;">替换id</td><td style="width:433px;"><span style="color:#ed7976;"><span style="background-color:#fef2f0;">&lt;input th:id="'xxx' + ${collect.id}"/&gt;</span></span></td></tr><tr><td style="width:79px;">th:text</td><td style="width:137px;">文本替换</td><td style="width:433px;"><span style="color:#ed7976;"><span style="background-color:#fef2f0;">&lt;p th:text="${collect.description}"&gt;description&lt;/p&gt;</span></span></td></tr><tr><td style="width:79px;">th:object</td><td style="width:137px;">替换对象</td><td style="width:433px;"><span style="color:#ed7976;"><span style="background-color:#fef2f0;">&lt;div th:object="${session.user}"&gt;</span></span></td></tr><tr><td style="width:79px;">th:value</td><td style="width:137px;">属性赋值</td><td style="width:433px;"><span style="color:#ed7976;"><span style="background-color:#fef2f0;">&lt;input th:value="${user.name}" /&gt;</span></span></td></tr><tr><td style="width:79px;">th:with</td><td style="width:137px;">变量赋值运算</td><td style="width:433px;"><span style="color:#ed7976;"><span style="background-color:#fef2f0;">&lt;div th:with="isEven=${prodStat.count}%2==0"&gt;&lt;/div&gt;</span></span></td></tr><tr><td style="width:79px;">th:style</td><td style="width:137px;">设置样式</td><td style="width:433px;"><span style="color:#ed7976;"><span style="background-color:#fef2f0;">th:style="'display:' + @{(${sitrue} ? 'none' : 'inline-block')} + ''"</span></span></td></tr><tr><td style="width:79px;">th:onclick</td><td style="width:137px;">点击事件</td><td style="width:433px;"><span style="color:#ed7976;"><span style="background-color:#fef2f0;">th:οnclick="'getCollect()'"</span></span></td></tr><tr><td style="width:79px;">th:each</td><td style="width:137px;">属性赋值</td><td style="width:433px;"><span style="color:#ed7976;"><span style="background-color:#fef2f0;">tr th:each="user,userStat:${users}"&gt;</span></span></td></tr><tr><td style="width:79px;">th:if</td><td style="width:137px;">判断条件</td><td style="width:433px;"><span style="color:#ed7976;"><span style="background-color:#fef2f0;">&lt;a th:if="${userId == collect.userId}" &gt;</span></span></td></tr><tr><td style="width:79px;">th:href</td><td style="width:137px;">链接地址</td><td style="width:433px;"><span style="color:#ed7976;"><span style="background-color:#fef2f0;">&lt;a th:href="@{/login}" th:unless=${session.user != null}&gt;Login&lt;/a&gt; /&gt;</span></span></td></tr><tr><td style="width:79px;">th:switch</td><td style="width:137px;">多路选择 配合th:case 使用</td><td style="width:433px;"><span style="color:#ed7976;"><span style="background-color:#fef2f0;">&lt;div th:switch="${user.role}"&gt;</span></span></td></tr><tr><td style="width:79px;">th:case</td><td style="width:137px;">th:switch的一个分支</td><td style="width:433px;"><span style="color:#ed7976;"><span style="background-color:#fef2f0;">&lt;p th:case="'admin'"&gt;User is an administrator&lt;/p&gt;</span></span></td></tr><tr><td style="width:79px;">th:fragment</td><td style="width:137px;">布局标签，定义一个代码片段，方便其它地方引用</td><td style="width:433px;"><span style="color:#ed7976;"><span style="background-color:#fef2f0;">&lt;div th:fragment="alert"&gt;</span></span></td></tr><tr><td style="width:79px;">th:include</td><td style="width:137px;">布局标签，替换内容到引入的文件</td><td style="width:433px;"><span style="color:#ed7976;"><span style="background-color:#fef2f0;">&lt;head th:include="layout :: htmlhead" th:with="title='xx'"&gt;&lt;/head&gt; /&gt;</span></span></td></tr><tr><td style="width:79px;">th:replace</td><td style="width:137px;">布局标签，替换整个标签到引入的文件</td><td style="width:433px;"><span style="color:#ed7976;"><span style="background-color:#fef2f0;">&lt;div th:replace="fragments/header :: title"&gt;&lt;/div&gt;</span></span></td></tr><tr><td style="width:79px;">th:selected</td><td style="width:137px;">selected选择框 选中</td><td style="width:433px;"><span style="color:#ed7976;"><span style="background-color:#fef2f0;">th:selected="(${xxx.id} == ${configObj.dd})"</span></span></td></tr><tr><td style="width:79px;">th:src</td><td style="width:137px;">图片类地址引入</td><td style="width:433px;"><span style="color:#ed7976;"><span style="background-color:#fef2f0;">&lt;img class="img-responsive" alt="App Logo" th:src="@{/img/logo.png}" /&gt;</span></span></td></tr><tr><td style="width:79px;">th:inline</td><td style="width:137px;">定义js脚本可以使用变量</td><td style="width:433px;"><span style="color:#ed7976;"><span style="background-color:#fef2f0;">&lt;script type="text/javascript" th:inline="javascript"&gt;</span></span></td></tr><tr><td style="width:79px;">th:action</td><td style="width:137px;">表单提交的地址</td><td style="width:433px;"><span style="color:#ed7976;"><span style="background-color:#fef2f0;">&lt;form action="subscribe.html" th:action="@{/subscribe}"&gt;</span></span></td></tr><tr><td style="width:79px;">th:attr</td><td style="width:137px;">设置标签属性，多个属性可以用逗号分隔</td><td style="width:433px;"><span style="color:#0d0016;">比如</span><span style="color:#ed7976;"><code style="user-select: auto;" onclick="mdcp.copyCode(event)"><span style="background-color:#fef2f0;">th:attr="src=@&#123;/image/aa.jpg&#125;,title=#&#123;logo&#125;"</span></code></span><span style="color:#0d0016;">，此标签不太优雅，一般用的比较少。</span></td></tr></tbody></table>
+
+<p>大概介绍到这！！！</p>
+<h2 id="文章总结"><a href="#文章总结" class="headerlink" title="文章总结"></a>文章总结</h2><p>Thymeleaf 简介</p>
+<p>结合 springboot 使用</p>
+<p>Thymeleaf 常用表达式</p>
+<p>Thymeleaf 常用属性</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://YangRoF.github.io">Yang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yangrof.github.io/posts/cac1.html">https://yangrof.github.io/posts/cac1.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://YangRoF.github.io" target="_blank">Yang</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://img02.anzhiy.cn/adminuploads/1/2022/09/05/6315e145aef33.webp!cover" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/posts/3eeb.html"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Hello World</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Yang</div><div class="author-info__description">昭昭若日月之明，离离如星辰之行</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Thymeleaf-%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">Thymeleaf 简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E5%90%88-springboot-%E4%BD%BF%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">结合 springboot 使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Thymeleaf-%E5%B8%B8%E7%94%A8%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text">Thymeleaf 常用表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Thymeleaf-%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7"><span class="toc-number">4.</span> <span class="toc-text">Thymeleaf 常用属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E7%AB%A0%E6%80%BB%E7%BB%93"><span class="toc-number">5.</span> <span class="toc-text">文章总结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/cac1.html" title="springboot 结合Thymeleaf"><img src="https://img02.anzhiy.cn/adminuploads/1/2022/09/05/6315e145aef33.webp!cover" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="springboot 结合Thymeleaf"/></a><div class="content"><a class="title" href="/posts/cac1.html" title="springboot 结合Thymeleaf">springboot 结合Thymeleaf</a><time datetime="2022-12-21T12:11:19.396Z" title="发表于 2022-12-21 20:11:19">2022-12-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/3eeb.html" title="Hello World"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/posts/3eeb.html" title="Hello World">Hello World</a><time datetime="2022-12-21T09:50:50.014Z" title="发表于 2022-12-21 17:50:50">2022-12-21</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Yang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
